@@ -150,3 +150,100 @@ function calculateWinner(squares) {
   }
   return null;
 }
+
+//=============================================
+//Count Up
+
+class CountApp extends React.Component{
+  constructor(){
+    super()
+    this.state={
+      count:0,
+    }
+  }
+
+  puls(){
+    this.setState({count: this.state.count + 1})
+  }
+
+  minus(){
+    this.setState({count: this.state.count - 1})
+  }
+
+
+
+  render(){
+    return(
+      <div>
+        <h1>カウントApp</h1>
+        <p>{this.state.count}</p>
+        <div>
+          <button onClick={() => this.puls()}>+</button>
+          <button onClick={() => this.minus()}>-</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+//================================
+//ToDoアプリ
+class TodoApp extends React.Component{
+  constructor(){
+    super();
+    this.state={
+      todoList:[],
+      value: "",
+    }
+  }
+
+  onChange(e){
+    this.setState({value: e.target.value})
+  }
+
+  add(){
+    this.setState({
+      todoList: this.state.todoList.concat(this.state.value),
+      value: "",
+    })
+    console.log(this.state.value);
+  }
+
+
+  render(){
+    const todoListNode = this.state.todoList.map((todo,idx) =>{
+      return <li key={idx}>{todo}</li>
+    })
+
+    return(
+      <div>
+        <h1>TODO管理</h1>
+        <div>
+          <input 
+            type="text"
+            value={this.state.value}
+            onChange={e => this.onChange(e)}
+          />
+        </div>
+        <button onClick={()=>this.add}>追加</button>
+        <ul>
+          {todoListNode}
+        </ul>
+      </div>
+    );
+  }
+}
+
+
+//=================================
+
+
+ReactDOM.render(
+  <CountApp />,
+  document.getElementById('hello')
+);
+
+ReactDOM.render(
+  <TodoApp />,
+  document.getElementById('toDo')
+);

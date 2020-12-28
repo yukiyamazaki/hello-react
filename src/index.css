@@ -48,3 +48,15 @@ ol, ul {
 .game-info {
   margin-left: 20px;
 }
+
+.hello{
+  margin-top: 100px;
+  background: grey;
+  width: 250px;
+  height: 250px;
+}
+
+.toDo{
+  margin-top: 10px;
+  background: green;
+}
